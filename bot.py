@@ -1,18 +1,18 @@
 #!/usr/local/bin/python
 import socket, ssl, sys, time, threading
 
-ircServer = "127.0.0.1"
-ircPort = 8897
+ircServer = "irc.server.net"
+ircPort = 6697
 ircIsSSL = True
 ircNick = "KillServ"
-ircPassword = "killpenis123!"
+ircPassword = "password"
 ircChannel = "#kill"
 ircKillReason = "Killed!"
 ircCommandPrefix = "!"
 ircHopDelay = 240 #seconds
 ircIgnoreModes = ["o", "I"] #ignore users with these modes
 ircOperUser = "KillServ"
-ircOperPassword = "derp"
+ircOperPassword = "password"
 
 hopTimers = {}
 channelUsers = {}
