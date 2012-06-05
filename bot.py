@@ -161,7 +161,7 @@ while 1:
 						if "a" in linesplit[3]:
 							channelUsers[linesplit[4]] = channelUsers[linesplit[4]] + "a"
 						if "q" in linesplit[3]:
-							channelUsers[linesplit[4]] = channelUsers[linesplit[4]] + "1"
+							channelUsers[linesplit[4]] = channelUsers[linesplit[4]] + "q"
 						if linesplit[4] in hopTimers:
 							hopTimers[linesplit[4]][1] = False
 					if linesplit[3].startswith("-"):
