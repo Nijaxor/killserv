@@ -1,5 +1,5 @@
 #!/usr/local/bin/python
-import socket, ssl, sys, time, threading
+import socket, ssl, sys, time, threading, string
 
 ircServer = "irc.server.net"
 ircPort = 6697
@@ -8,7 +8,7 @@ ircNick = "KillServ"
 ircPassword = "password"
 ircChannel = "#kill"
 ircKillReason = "Killed!"
-ircCommandPrefix = "!"
+ircCommandPrefix = "."
 ircHopDelay = 240 #seconds
 ircUnBanDelay = 240 #seconds
 ircIgnoreModes = ["o", "I"] #ignore users with these modes
@@ -199,6 +199,22 @@ while 1:
 							writer("NOTICE " + nick + " :You do not have permission to do this until you have acquired a level in this channel.")
 					else:
 						writer("NOTICE " + nick + " :Not enough parameters.")
+				if linesplit[3] == ":" + ircCommandPrefix + "sethoptimer":
+					if "q" in channelUsers[nick]:
+						if len(linesplit) > 4:
+							for char in linesplit[4]:
+								if not char in string.digits:
+									writer("NOTICE " + nick + " :Argument must only be numbers.")
+									return
+							ircHopDelay = int(linesplit[4])
+				if linesplit[3] == ":" + ircCommandPrefix + "setunbantimer":
+					if "q" in channelUsers[nick]:
+						if len(linesplit) > 4:
+							for chat in linesplit[4]:
+								if not char in string.digits:
+									writer("NOTICE " + nick + " :Argument must only be numbers.")
+									return
+							ircUnBanDelay = int(linesplit[4])
 	else:
 		print "[Error] Disconnected."
 		break
